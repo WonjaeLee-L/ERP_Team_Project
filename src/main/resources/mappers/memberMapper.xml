@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.practice.repository.IF_MemberDao">
+	<!--  parameterType은 쿼리문의 ?부분의 정보 -->
+	<insert id="insertOne" parameterType="com.example.practice.vo.MemberVO">
+		insert into kmember values (#{id},#{pass},#{tel},#{email})
+	</insert>	
+	<select id="selectOne" resultType="com.example.practice.vo.MemberVO">
+		select * from kmember where id=#{id}
+	</select>	
+</mapper>
+
