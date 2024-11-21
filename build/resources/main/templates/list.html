@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="article_table">
+  <table class="table">
+    <thead class="table-dark">
+    <tr>
+      <th scope="col" width=15%>type</th>
+      <th scope="col">title</th>
+      <th scope="col">비밀글여부</th>
+      <th scope="col">날짜</th>
+      <th scope="col">수정/삭제</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- tr 하나가 VO 한 개. 몇 개 반복 되는지는 모름. model이 넘겨준 list size 만큼 반복 된다. -->
+    <!-- list라는 변수를 가져와서(items), boardvo(var)에 저장하고, 아래를 돌고 반복 -->
+    <!-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>를 입력하여 jstl문법을 인식시킨다. -->
+<div th:text="${productlist}"></div>
+
+    <!--    <div th:each="productlist : ${productlist}">-->
+<!--      <tr>-->
+<!--        <span th:text = ${productlist}></span>-->
+<!--        <td><a href="view?no=${boardvo.num}">-->
+<!--          ${boardvo.title}</a></td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--        <td><a href="mod?modno=${boardvo.num}">수정</a>/<a-->
+<!--                href="del?delno=${boardvo.num}">삭제</a></td>-->
+<!--      </tr>-->
+<!--    </th:each>-->
+<!--    <tr>-->
+<!--      <td colspan=5><c:if test="${pageVO.prev }">-->
+<!--        <a href="board?page=${pageVO.startPage -1}">[이전페이지그룹] </a>-->
+<!--      </c:if> &lt;!&ndash;  forEach   리스틀 순회,  아래처럼 시작과 끝을 지정하여 반복하는 사용것. &ndash;&gt; <c:forEach-->
+<!--              begin="${pageVO.startPage}" end="${pageVO.endPage }" var="idx">-->
+<!--        <c:if test="${pageVO.page == idx}">💁🏻</c:if>-->
+<!--        <a href="board?page=${idx}">${idx}</a>-->
+<!--      </c:forEach> <c:if test="${pageVO.next }">-->
+<!--        <a href="board?page=${pageVO.endPage + 1 }"> [다음페이지그룹]</a>-->
+<!--      </c:if></td>-->
+<!--    </tr>-->
+<!--    </div>-->
+    </tbody>
+  </table>
+  <div id="table_menu">
+    <a href="bwr"> <svg xmlns="http://www.w3.org/2000/svg"
+                        width="20" height="20" fill="currentColor"
+                        class="bi bi-file-plus" viewBox="0 0 16 16">
+      <path
+              d="M8.5 6a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V10a.5.5 0 0 0 1 0V8.5H10a.5.5 0 0 0 0-1H8.5V6z" />
+      <path
+              d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+    </svg>
+    </a>
+  </div>
+
+</div>
+<div style=background-color:yellow>
+  <a href="back">뒤로</a>
+</div>
+</body>
+</html>

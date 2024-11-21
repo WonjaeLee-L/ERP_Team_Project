@@ -2,13 +2,17 @@ package com.example.practice.service;
 
 import com.example.practice.repository.IF_MemberDao;
 import com.example.practice.vo.MemberVO;
+import com.example.practice.vo.ProductVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service    // 해당 클래스를 객체로 만들어라..
 public class MemberServiceImpl implements IF_MemberService{
 	@Autowired
 	IF_MemberDao memberdao;
+
 	@Override
 	public void join(MemberVO membervo) throws Exception {
 		System.out.println("join 서비스");
@@ -22,5 +26,7 @@ public class MemberServiceImpl implements IF_MemberService{
 		// TODO Auto-generated method stub
 		return memberdao.selectOne(id);
 	}
+
+
 
 }
