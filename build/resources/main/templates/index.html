@@ -133,11 +133,11 @@
 
         .modal-content {
             background-color: #fefefe;
-            margin: 15% auto;
+            margin: 5% auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 60%;
-            max-width: 500px;
+            width: 70%;
+            max-width: 700px;
             border-radius: 5px;
         }
 
@@ -157,9 +157,21 @@
             margin-bottom: 15px;
         }
 
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
         .form-group label {
             display: block;
             margin-bottom: 5px;
+            font-weight: bold;
         }
 
         .form-group input, .form-group select {
@@ -169,17 +181,31 @@
             border-radius: 4px;
         }
 
-        .form-group button {
+        .form-group input[type="number"] {
+            text-align: right;
+        }
+
+        .form-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-buttons button {
             background-color: #99c89c;
             color: white;
-            padding: 10px 15px;
+            padding: 10px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            margin: 0 5px;
         }
 
-        .form-group button:hover {
+        .form-buttons button:hover {
             background-color: #7fb582;
+        }
+
+        .form-buttons button[type="button"] {
+            background-color: #808080;
         }
     </style>
 <body>
@@ -322,35 +348,71 @@
     <footer>
         <div id = "footer" role="contentinfo">하단</div>
     </footer>
+
     <div id="slipModal" class="modal">
         <div class="modal-content">
             <span class="close-button" onclick="closeModal()">&times;</span>
             <h2>전표 등록</h2>
             <form id="slipForm">
-                <div class="form-group">
-                    <label for="slipDate">전표일자</label>
-                    <input type="date" id="slipDate" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="slipType">전표 타입</label>
+                        <select id="slipType" required onchange="updateAccountOptions()">
+                            <option value="">선택하세요</option>
+                            <option value="sales">매출</option>
+                            <option value="cost">비용</option>
+                            <option value="asset">자산</option>
+                            <option value="liability">부채</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="writerName">작성자명</label>
+                        <input type="text" id="writerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="slipDate">날짜</label>
+                        <input type="date" id="slipDate" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="accountType">계정과목</label>
-                    <select id="accountType" required>
-                        <option value="">선택하세요</option>
-                        <option value="sales">매출</option>
-                        <option value="purchase">매입</option>
-                        <option value="expense">비용</option>
-                        <option value="income">수익</option>
-                    </select>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="accountType">계정과목</label>
+                        <select id="accountType" required>
+                            <option value="">전표 타입을 선택하세요</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer">거래처</label>
+                        <input type="text" id="customer" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="amount">금액</label>
-                    <input type="number" id="amount" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="amount">거래금액</label>
+                        <input type="number" id="amount" required onchange="calculateVat()">
+                    </div>
+                    <div class="form-group">
+                        <label for="vat">부가세</label>
+                        <input type="number" id="vat" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="paymentMethod">결제 수단</label>
+                        <select id="paymentMethod" required>
+                            <option value="">선택하세요</option>
+                            <option value="cash">현금</option>
+                            <option value="card">카드</option>
+                            <option value="bank">계좌이체</option>
+                            <option value="note">어음</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="description">적요</label>
                     <input type="text" id="description" required>
                 </div>
-                <div class="form-group">
+                <div class="form-buttons">
                     <button type="submit">등록</button>
+                    <button type="button" onclick="closeModal()">취소</button>
                 </div>
             </form>
         </div>
@@ -422,6 +484,100 @@
                 date: document.getElementById("slipDate").value,
                 accountType: document.getElementById("accountType").value,
                 amount: document.getElementById("amount").value,
+                description: document.getElementById("description").value
+            };
+
+            // 여기에 데이터 처리 로직 추가
+            console.log("전표 데이터:", formData);
+
+            // 폼 초기화 및 모달 닫기
+            this.reset();
+            closeModal();
+        }
+
+        const accountsByType = {
+            sales: [
+                "4010","4020","4100","4110","1100","1110"
+            ],
+            cost: [
+                "5010","5020","5030","5040","5050","5060","5070","5080","5090","5100"
+            ],
+            asset: [
+                "1200","1300","1400"
+            ],
+            liability: [
+                "2010","2020","2030","2040"
+            ]
+
+        };
+
+        // 계정과목 옵션 업데이트 함수
+        function updateAccountOptions() {
+            const slipType = document.getElementById("slipType").value;
+            const accountSelect = document.getElementById("accountType");
+
+            // 기존 옵션 제거
+            accountSelect.innerHTML = '<option value="">선택하세요</option>';
+
+            // 선택된 전표 타입에 따른 계정과목 추가
+            if (slipType && accountsByType[slipType]) {
+                accountsByType[slipType].forEach(account => {
+                    const option = document.createElement("option");
+                    option.value = account;
+                    option.textContent = account;
+                    accountSelect.appendChild(option);
+                });
+            }
+        }
+
+        // 부가세 계산 함수
+        function calculateVat() {
+            const amount = parseFloat(document.getElementById("amount").value) || 0;
+            const slipType = document.getElementById("slipType").value;
+            const accountType = document.getElementById("accountType").value;
+
+            // 매출, 매입 전표이고 특정 계정과목인 경우에만 부가세 계산
+            if ((slipType === 'sales' && accountType.includes('매출')) ||
+                (slipType === 'cost' && accountType.includes('매입'))) {
+                document.getElementById("vat").value = Math.round(amount * 0.1);
+            } else {
+                document.getElementById("vat").value = 0;
+            }
+        }
+
+        // 모달 열기
+        const modalLink = document.getElementById("modalSlip");
+        modalLink.onclick = function(e) {
+            e.preventDefault();
+            document.getElementById("slipModal").style.display = "block";
+        }
+
+        // 모달 닫기
+        function closeModal() {
+            document.getElementById("slipModal").style.display = "none";
+            document.getElementById("slipForm").reset();
+        }
+
+        // 모달 외부 클릭시 닫기
+        window.onclick = function(event) {
+            if (event.target == document.getElementById("slipModal")) {
+                closeModal();
+            }
+        }
+
+        // 폼 제출 처리
+        document.getElementById("slipForm").onsubmit = function(e) {
+            e.preventDefault();
+
+            const formData = {
+                slipType: document.getElementById("slipType").value,
+                writerName: document.getElementById("writerName").value,
+                date: document.getElementById("slipDate").value,
+                accountType: document.getElementById("accountType").value,
+                customer: document.getElementById("customer").value,
+                amount: document.getElementById("amount").value,
+                vat: document.getElementById("vat").value,
+                paymentMethod: document.getElementById("paymentMethod").value,
                 description: document.getElementById("description").value
             };
 
