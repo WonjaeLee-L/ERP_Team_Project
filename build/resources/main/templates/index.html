@@ -119,6 +119,68 @@
             padding: 15px;
             background-color: #f9f9f9;
         }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 60%;
+            max-width: 500px;
+            border-radius: 5px;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover {
+            color: black;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .form-group button {
+            background-color: #99c89c;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color: #7fb582;
+        }
     </style>
 <body>
     <header>
@@ -214,7 +276,7 @@
             </button>
             <div class="dropdown-content">
                 <form>
-                <a href="#">전표 등록</a>
+                <a href="#" id="modalSlip">전표 등록</a>
                 </form>
                 <a href="#">결제 승인 대기</a>
                 <a href="#">전표 관리</a>
@@ -260,6 +322,40 @@
     <footer>
         <div id = "footer" role="contentinfo">하단</div>
     </footer>
+    <div id="slipModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2>전표 등록</h2>
+            <form id="slipForm">
+                <div class="form-group">
+                    <label for="slipDate">전표일자</label>
+                    <input type="date" id="slipDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="accountType">계정과목</label>
+                    <select id="accountType" required>
+                        <option value="">선택하세요</option>
+                        <option value="sales">매출</option>
+                        <option value="purchase">매입</option>
+                        <option value="expense">비용</option>
+                        <option value="income">수익</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="amount">금액</label>
+                    <input type="number" id="amount" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">적요</label>
+                    <input type="text" id="description" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">등록</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
         function openTab(tabTitle) {
             const tabList = document.getElementById('tabList');
@@ -297,6 +393,44 @@
             if (selectedTab) {
                 selectedTab.style.display = 'block';
             }
+        }
+
+        const modal = document.getElementById("slipModal");
+        const modalLink = document.getElementById("modalSlip");
+
+        modalLink.onclick = function(e) {
+            e.preventDefault();
+            modal.style.display = "block";
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        // 모달 외부 클릭시 닫기
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // 폼 제출 처리
+        document.getElementById("slipForm").onsubmit = function(e) {
+            e.preventDefault();
+
+            const formData = {
+                date: document.getElementById("slipDate").value,
+                accountType: document.getElementById("accountType").value,
+                amount: document.getElementById("amount").value,
+                description: document.getElementById("description").value
+            };
+
+            // 여기에 데이터 처리 로직 추가
+            console.log("전표 데이터:", formData);
+
+            // 폼 초기화 및 모달 닫기
+            this.reset();
+            closeModal();
         }
     </script>
 </body>
