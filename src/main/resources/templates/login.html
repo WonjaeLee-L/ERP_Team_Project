@@ -1,0 +1,70 @@
+<!--<%@ page language="java" contentType="text/html; charset=utf-8"-->
+<!--         pageEncoding="utf-8"%>-->
+<!--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>-->
+<!--<%@ page session="true"%>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .modal{
+            position:absolute;
+            display: none;
+
+            justify-content: center;
+            top:0;
+            left:0;
+
+            width:50%;
+            height:50%;
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+<h1>로그인</h1>
+<form action="join" method="post">
+    <label for = "joinid" >아이디</label>
+    <input type="text" id="joinid" name="id" placeholder="아이디를입력해주세요"><br>
+    <label for = "joinpwd" >비밀번호</label>
+    <input type="password" id="joinpwd" name="pass"><br>
+    <input type="submit" value="로그인">
+</form>
+<div class="modal">
+    <div class="modal_body">
+        <form action="signup" method="post">
+            <label for = "getid" >아이디</label>
+            <input type="text" id="getid" name="id"><br>
+            <label for = "getpwd" >비밀번호</label>
+            <input type="password" id="getpwd" name="pass"><br>
+            <label for = "getname" >이름</label>
+            <input type="text" id="getname" name="name"><br>
+            <label for = "gettel" >전화번호</label>
+            <input type="text" id="gettel" name="tel"><br>
+            <label for = "getmail" >이메일</label>
+            <input type="text" id="getmail" name="email"><br>
+            <label for = "getaddr" >주소</label>
+            <input type="text" id="getaddr" name="address"><br>
+            <label for = "getcpn" >소속회사</label>
+            <input type="text" id="getcpn" name="company_code"><br>
+            <label for = "getdpt" >소속부서</label>
+            <input type="text" id="getdpt" name="department_code"><br>
+            <input type="submit" value="회원가입">
+        </form>
+        <input type="button" value="취소">
+    </div>
+</div>
+<button class="btn-open-modal">회원가입</button>
+<script>
+    const modal = document.querySelector('.modal');
+    const btnOpenModal=document.querySelector('.btn-open-modal');
+
+    btnOpenModal.addEventListener("click", ()=>{
+        modal.style.display="flex";
+    });
+</script>
+</body>
+</html>
