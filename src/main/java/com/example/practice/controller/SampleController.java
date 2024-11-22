@@ -1,20 +1,31 @@
 package com.example.practice.controller;
 
 import com.example.practice.service.IF_MemberService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+import java.util.List;
+
+
+@RestController
+@RequestMapping("/index")
+@RequiredArgsConstructor
 public class SampleController {
 
-    @Autowired
-    IF_MemberService memberservice;
+    private final IF_MemberService memberservice;
 
-    @GetMapping("/")
-    public String index() throws Exception {
-        memberservice.selectOne("123");
-        System.out.println(memberservice.selectOne("123"));
-        return "index";
+    @GetMapping
+    public ModelAndView index() throws Exception {
+        memberservice.selectOne("chan");
+        System.out.println(memberservice.selectOne("chan"));
+        ModelAndView mv = new ModelAndView("index");
+        return mv;
     }
 }
+
+
+
+
