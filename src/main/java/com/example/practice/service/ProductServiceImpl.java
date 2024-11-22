@@ -24,4 +24,9 @@ public class ProductServiceImpl implements IF_ProductService{
     public void insertProduct(ProductVO productVO) throws Exception {
         productDao.insertProduct(productVO);
     }
+
+    @Override
+    public ProductVO selectProduct(String name) throws Exception {
+        return productDao.selectProduct(name);
+    }
 }

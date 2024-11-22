@@ -11,5 +11,9 @@
         insert into product values (#{product_code},#{product_name},#{sale_price},#{price},#{category_code},#{product_img},#{product_explain},#{company_code})
     </insert>
 
+    <select id="selectProduct" resultType="com.example.practice.vo.ProductVO">
+        select * from product where PRODUCT_NAME=#{product_name}
+    </select>
+
 </mapper>
 

@@ -11,4 +11,5 @@ import java.util.List;
 public interface IF_ProductDao {
     public List<ProductVO> selectAll(ProductVO productvo) throws Exception;
     public void insertProduct(ProductVO productVO) throws Exception;
+    public ProductVO selectProduct(String name) throws Exception;
 }
