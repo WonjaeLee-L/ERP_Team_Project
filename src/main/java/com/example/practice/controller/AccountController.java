@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/index")
 @RequiredArgsConstructor
 public class AccountController {
 
@@ -19,7 +19,7 @@ public class AccountController {
         accountservice.selectAll();
         System.out.println(accountservice.selectAll());
         System.out.println(accountservice.selectOne("1110"));
-        ModelAndView mv = new ModelAndView("account");
+        ModelAndView mv = new ModelAndView("index");
         return mv;
     }
 

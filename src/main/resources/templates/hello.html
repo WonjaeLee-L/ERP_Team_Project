@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Ajax 테스트</title>
+  <!-- jQuery 추가 -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h2>Ajax 테스트</h2>
+
+<!-- 입력 폼 -->
+<input type="text" id="nameInput" placeholder="코드를 입력해주세요">
+<button id="submitBtn">검색하기</button>
+
+<!-- 결과를 표시할 div -->
+<div id="resultDiv" style="margin-top: 20px;"></div>
+
+<script>
+  $(document).ready(function() {
+    $("#submitBtn").click(function() {
+      // 입력값 가져오기
+      var revenueCode = $("#nameInput").val();
+
+      // 입력값 검증
+      if (!revenueCode) {
+        alert("코드를 입력해주세요.");
+        return;
+      }
+
+      // Ajax 호출
+      $.ajax({
+        type: "POST",
+        url: "/sayHello",
+        data: {
+          revenueCode: revenueCode
+        },
+        success: function(response) {
+          // 성공 시 결과를 화면에 표시
+          $("#resultDiv").html(response)
+                  .css("color", "green");
+        },
+        error: function(error) {
+          // 에러 발생 시
+          $("#resultDiv").html("오류가 발생했습니다.")
+                  .css("color", "red");
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>

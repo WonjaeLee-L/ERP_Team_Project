@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.practice.PracticeApplicationTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-11-22T07:02:08" hostname="DESKTOP-MHM1G8H" time="1.467">
+  <properties/>
+  <testcase name="selOne()" classname="com.example.practice.PracticeApplicationTests" time="1.457"/>
+  <testcase name="contextLoads()" classname="com.example.practice.PracticeApplicationTests" time="0.008"/>
+  <system-out><![CDATA[16:02:05.694 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.practice.PracticeApplicationTests]: PracticeApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+16:02:05.804 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.practice.PracticeApplication for test class com.example.practice.PracticeApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+2024-11-22T16:02:06.194+09:00  INFO 27764 --- [practice] [    Test worker] c.e.practice.PracticeApplicationTests    : Starting PracticeApplicationTests using Java 17.0.13 with PID 27764 (started by 14 in D:\Data\practice)
+2024-11-22T16:02:06.197+09:00  INFO 27764 --- [practice] [    Test worker] c.e.practice.PracticeApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2024-11-22T16:02:07.763+09:00  INFO 27764 --- [practice] [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-11-22T16:02:08.136+09:00  INFO 27764 --- [practice] [    Test worker] c.e.practice.PracticeApplicationTests    : Started PracticeApplicationTests in 2.192 seconds (process running for 3.307)
+2024-11-22T16:02:09.025+09:00  INFO 27764 --- [practice] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-22T16:02:09.032+09:00  WARN 27764 --- [practice] [    Test worker] c.zaxxer.hikari.util.DriverDataSource    : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2024-11-22T16:02:09.412+09:00  INFO 27764 --- [practice] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@335972a5
+2024-11-22T16:02:09.415+09:00  INFO 27764 --- [practice] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+RevenueVO(revenueCode=1100, revenueName=외상매출금, revenueType=income)
+ModelAndView [view=[null]; model=null]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
