@@ -4,590 +4,314 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="import" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../static/css/index.css">
 </head>
-    <style>
-        body{
-            background-color: #f5f5f5;
-        }
-        header{
-            width: auto;
-            height: 100px;
-            border: 1px solid;
-            background-color: #99c89c;
-        }
-        .welcome-message{
-            position: relative;
-            top: 60px;
-            left: 1310px;
-            font-size: 20px;
-            font-weight: 400;
-        }
-        .logo{
-            float: left;
-            text-align: center;
-            width: 200px;
-            height: 10%;
-            padding-top: 35px;
-            font-size: 20px;
-        }
-        footer{
-            width: 98.9%;
-            position: absolute;
-            bottom: 0px;
-            height: 100px;
-            border: 1px solid;
-            text-align: center;
-            font-size: 50px;
-        }
-        nav{
-            height: 913px;
-            display: inline-block;
-            width: 200px;
-            border: 1px solid black;
-        }
-        .dropdown{
-            position : relative;
-            display : inline-block;
-        }
+<style>
 
-        .dropbtn_icon{
-            font-family : 'Material Icons';
-        }
-        .dropbtn{
-            font-weight: 400;
-            color : rgb(37, 37, 37);
-            padding : 12px;
-            width :200px;
-            text-align: center;
-            cursor : pointer;
-            font-size : 20px;
-            background-color: #808080;
-
-        }
-        .dropdown-content{
-            display : none;
-            position : absolute;
-            z-index : 1;
-            font-weight: 400;
-            min-width : 200px;
-            background-color: #99c89c;
-        }
-
-        .dropdown-content a{
-            display : block;
-            text-decoration : none;
-            color : rgb(37, 37, 37);
-            font-size: 17px;
-            padding : 12px 20px;
-            text-align: center;
-            border-bottom: 1px solid black;
-        }
-
-        .dropdown-content a:hover{
-            background-color: #808080;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: flow;
-        }
-        Section {
-            width: 1462.7px;
-            height: 913px;
-            border: 1px solid black;
-            float: right;
-            display: inline-block;
-        }
-        .tabs {
-            list-style-type: none;
-            padding: 0;
-            display: flex;
-        }
-
-        .tabs li {
-            padding: 10px;
-            background-color: #ddd;
-            margin-left: 20px;
-            cursor: pointer;
-        }
-
-        .tabs li:hover {
-            background-color: #ccc;
-        }
-
-        .tab-content {
-            display: none;
-            padding: 15px;
-            background-color: #f9f9f9;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.4);
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 70%;
-            max-width: 700px;
-            border-radius: 5px;
-        }
-
-        .close-button {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close-button:hover {
-            color: black;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .form-row .form-group {
-            flex: 1;
-            margin-bottom: 0;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        .form-group input[type="number"] {
-            text-align: right;
-        }
-
-        .form-buttons {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .form-buttons button {
-            background-color: #99c89c;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin: 0 5px;
-        }
-
-        .form-buttons button:hover {
-            background-color: #7fb582;
-        }
-
-        .form-buttons button[type="button"] {
-            background-color: #808080;
-        }
-    </style>
+</style>
 <body>
-    <header>
-        <div class="logo">
-            <img src="./image/logo.png" alt="">로고
-        </div>
-        <div class="welcome-message">님!!  환영합니다!!</div>
-    </header>
-    <nav>
-        <br>
-        <div class="dropdown">
-            <button class="dropbtn">
-                <span class="dropbtn_icon">인사관리</span>
-            </button>
-            <div class="dropdown-content">
-                <a href="#employee.html" onclick="openTab('사원 등록')">사원 등록</a>
-                <a href="#" onclick="openTab('사원 수정')">사원 수정</a>
-                <a href="#">사원 삭제</a>
-                <a href="#">사원 전체보기</a>
-                <a href="#">사원 근태보기</a>
-            </div>
-        </div>
-        <br>
-        <br>
-        <div class="dropdown">
-            <button class="dropbtn">
-                <span class="dropbtn_icon">상품관리</span>
-            </button>
-            <div class="dropdown-content">
-                <a href="#">상품 등록</a>
-                <a href="#">상품 수정</a>
-                <a href="#">상품 삭제</a>
-                <a href="#">상품 전체보기</a>
-            </div>
-        </div>
-        <br>
-        <br>
-        <div class="dropdown">
-            <button class="dropbtn">
-                <span class="dropbtn_icon">거래처관리</span>
-            </button>
-            <div class="dropdown-content">
-                <a href="#">거래처 등록</a>
-                <a href="#">거래처 수정</a>
-                <a href="#">거래처 삭제</a>
-                <a href="#">거래처 전체보기</a>
-            </div>
-        </div>
-        <br>
-        <br>
-        <div class="dropdown">
-            <button class="dropbtn">
-                <span class="dropbtn_icon">입고</span>
-            </button>
-            <div class="dropdown-content">
-                <a href="#">입고 등록</a>
-                <a href="#">입고 수정</a>
-                <a href="#">입고 삭제</a>
-                <a href="#">입고 확정</a>
-            </div>
-        </div>
-        <br>
-        <br>
-        <div class="dropdown">
-            <button class="dropbtn">
-                <span class="dropbtn_icon">출고 / 반품</span>
-            </button>
-            <div class="dropdown-content">
-                <a href="#">출고 등록</a>
-                <a href="#">출고 수정</a>
-                <a href="#">출고 삭제</a>
-                <a href="#">반품 등록</a>
-                <a href="#">반품 수정</a>
-                <a href="#">반품 삭제</a>
-            </div>
-        </div>
-        <br>
-        <br>
-        <div class="dropdown">
-            <button class="dropbtn">
-                <span class="dropbt n_icon">재고</span>
-            </button>
-            <div class="dropdown-content">
-                <a href="#">재고 수불</a>
-                <a href="#">재고 조회</a>
-            </div>
-        </div>
-        <br>
-        <br>
-        <div class="dropdown">
-            <button class="dropbtn">
-                <span class="dropbt n_icon">회계관리</span>
-            </button>
-            <div class="dropdown-content">
-                <form>
-                <a href="#" id="modalSlip">전표 등록</a>
-                </form>
-                <a href="#">결제 승인 대기</a>
-                <a href="#">전표 관리</a>
-                <a href="#">손익 계산서</a>
-            </div>
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="dropdown">
-            <button class="dropbtn">
-                <span class="dropbt n_icon">거래처</span>
-            </button>
-            <div class="dropdown-content">
-                <a href="#">입고 신청</a>
-                <a href="#">재고 조회</a>
-            </div>
-        </div>
-        <br>
-        <br>
-        <div class="dropdown">
-            <button class="dropbtn">
-                <span class="dropbt n_icon">게시판</span>
-            </button>
-            <div class="dropdown-content">
-                <a href="#">게시판</a>
-            </div>
-        </div>
-        <br>
-        <br>
-    </nav>
-    <Section id="contents">
-        <div
-        <ul class="tabs">
-            <li onclick="document.getElementById('tab1').classList.add('active-tab')">탭 1</li>
-            <li onclick="document.getElementById('tab2').classList.add('active-tab')">탭 2</li>
-            <li onclick="document.getElementById('tab3').classList.add('active-tab')">탭 3</li>
-        </ul>
-    </Section>
-    <footer>
-        <div id = "footer" role="contentinfo">하단</div>
-    </footer>
-
-    <div id="slipModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeModal()">&times;</span>
-            <h2>전표 등록</h2>
-            <form id="slipForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="slipType">전표 타입</label>
-                        <select id="slipType" required onchange="updateAccountOptions()">
-                            <option value="">선택하세요</option>
-                            <option value="sales">매출</option>
-                            <option value="cost">비용</option>
-                            <option value="asset">자산</option>
-                            <option value="liability">부채</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="writerName">작성자명</label>
-                        <input type="text" id="writerName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="slipDate">날짜</label>
-                        <input type="date" id="slipDate" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="accountType">계정과목</label>
-                        <select id="accountType" required>
-                            <option value="">전표 타입을 선택하세요</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="customer">거래처</label>
-                        <input type="text" id="customer" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="amount">거래금액</label>
-                        <input type="number" id="amount" required onchange="calculateVat()">
-                    </div>
-                    <div class="form-group">
-                        <label for="vat">부가세</label>
-                        <input type="number" id="vat" value="0">
-                    </div>
-                    <div class="form-group">
-                        <label for="paymentMethod">결제 수단</label>
-                        <select id="paymentMethod" required>
-                            <option value="">선택하세요</option>
-                            <option value="cash">현금</option>
-                            <option value="card">카드</option>
-                            <option value="bank">계좌이체</option>
-                            <option value="note">어음</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="description">적요</label>
-                    <input type="text" id="description" required>
-                </div>
-                <div class="form-buttons">
-                    <button type="submit">등록</button>
-                    <button type="button" onclick="closeModal()">취소</button>
-                </div>
-            </form>
+<header>
+    <div class="logo">
+        <img src="./image/logo.png" alt="">로고
+    </div>
+    <div class="welcome-message">님!!  환영합니다!!</div>
+</header>
+<nav>
+    <br>
+    <div class="dropdown">
+        <button class="dropbtn">
+            <span class="dropbtn_icon">인사관리</span>
+        </button>
+        <div class="dropdown-content">
+            <a href="#employee.html" onclick="openTab('사원 등록')">사원 등록</a>
+            <a href="#" onclick="openTab('사원 수정')">사원 수정</a>
+            <a href="#">사원 삭제</a>
+            <a href="#">사원 전체보기</a>
+            <a href="#">사원 근태보기</a>
         </div>
     </div>
+    <br>
+    <br>
+    <div class="dropdown">
+        <button class="dropbtn">
+            <span class="dropbtn_icon">상품관리</span>
+        </button>
+        <div class="dropdown-content">
+            <a href="#">상품 등록</a>
+            <a href="#">상품 수정</a>
+            <a href="#">상품 삭제</a>
+            <a href="#">상품 전체보기</a>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="dropdown">
+        <button class="dropbtn">
+            <span class="dropbtn_icon">거래처관리</span>
+        </button>
+        <div class="dropdown-content">
+            <a href="#">거래처 등록</a>
+            <a href="#">거래처 수정</a>
+            <a href="#">거래처 삭제</a>
+            <a href="#">거래처 전체보기</a>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="dropdown">
+        <button class="dropbtn">
+            <span class="dropbtn_icon">입고</span>
+        </button>
+        <div class="dropdown-content">
+            <a href="#">입고 등록</a>
+            <a href="#">입고 수정</a>
+            <a href="#">입고 삭제</a>
+            <a href="#">입고 확정</a>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="dropdown">
+        <button class="dropbtn">
+            <span class="dropbtn_icon">출고 / 반품</span>
+        </button>
+        <div class="dropdown-content">
+            <a href="#">출고 등록</a>
+            <a href="#">출고 수정</a>
+            <a href="#">출고 삭제</a>
+            <a href="#">반품 등록</a>
+            <a href="#">반품 수정</a>
+            <a href="#">반품 삭제</a>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="dropdown">
+        <button class="dropbtn">
+            <span class="dropbt n_icon">재고</span>
+        </button>
+        <div class="dropdown-content">
+            <a href="#">재고 수불</a>
+            <a href="#">재고 조회</a>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="dropdown">
+        <button class="dropbtn">
+            <span class="dropbt n_icon">회계관리</span>
+        </button>
+        <div class="dropdown-content">
+            <form>
+                <a href="#" id="modalSlip">전표 등록</a>
+            </form>
+            <a href="#">결제 승인 대기</a>
+            <a href="#">전표 관리</a>
+            <a href="#">손익 계산서</a>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="dropdown">
+        <button class="dropbtn">
+            <span class="dropbt n_icon">거래처</span>
+        </button>
+        <div class="dropdown-content">
+            <a href="#">입고 신청</a>
+            <a href="#">재고 조회</a>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="dropdown">
+        <button class="dropbtn">
+            <span class="dropbt n_icon">게시판</span>
+        </button>
+        <div class="dropdown-content">
+            <a href="#">게시판</a>
+        </div>
+    </div>
+    <br>
+    <br>
+</nav>
+<Section id="contents">
+    <div
+    <ul class="tabs">
+        <li onclick="document.getElementById('tab1').classList.add('active-tab')">탭 1</li>
+        <li onclick="document.getElementById('tab2').classList.add('active-tab')">탭 2</li>
+        <li onclick="document.getElementById('tab3').classList.add('active-tab')">탭 3</li>
+    </ul>
+</Section>
+<footer>
+    <div id = "footer" role="contentinfo">하단</div>
+</footer>
 
-    <script>
-        function openTab(tabTitle) {
-            const tabList = document.getElementById('tabList');
-            const tabId = 'tab-' + tabTitle;
+<div id="slipModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button" onclick="closeModal()">&times;</span>
+        <h2>전표 등록</h2>
+        <form id="slipForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="slipType">전표 타입</label>
+                    <select id="slipType" required onchange="updateAccountOptions()">
+                        <option value="">선택하세요</option>
+                        <option value="sales">매출</option>
+                        <option value="cost">비용</option>
+                        <option value="asset">자산</option>
+                        <option value="liability">부채</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="writerName">작성자명</label>
+                    <input type="text" id="writerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="slipDate">날짜</label>
+                    <input type="date" id="slipDate" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="accountType">계정과목</label>
+                    <select id="accountType" required>
+                        <option value="">전표 타입을 선택하세요</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="customer">거래처</label>
+                    <input type="text" id="customer" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="amount">거래금액</label>
+                    <input type="number" id="amount" required onchange="calculateVat()">
+                </div>
+                <div class="form-group">
+                    <label for="vat">부가세</label>
+                    <input type="number" id="vat" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="paymentMethod">결제 수단</label>
+                    <select id="paymentMethod" required>
+                        <option value="">선택하세요</option>
+                        <option value="cash">현금</option>
+                        <option value="card">카드</option>
+                        <option value="bank">계좌이체</option>
+                        <option value="note">어음</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">적요</label>
+                <input type="text" id="description" required>
+            </div>
+            <div class="form-buttons">
+                <button type="submit">등록</button>
+                <button type="button" onclick="closeModal()">취소</button>
+            </div>
+        </form>
+    </div>
+</div>
 
-            if (!document.getElementById(tabId)) {
-                const newTab = document.createElement('li');
-                newTab.textContent = tabTitle;
-                newTab.onclick = function () {
-                    showTabContent(tabId);
-                };
+<script>
+    const modal = document.getElementById("slipModal");
+    const modalLink = document.getElementById("modalSlip");
 
-                tabList.appendChild(newTab);
+    // 모달 열기
+    modalLink.onclick = function(e) {
+        e.preventDefault();
+        modal.style.display = "block";
+    }
 
-                const newTabContent = document.createElement('div');
-                newTabContent.id = tabId;
-                newTabContent.className = 'tab-content';
-                if (tabTitle === 'employee') {
-                    newTabContent.innerHTML = `<iframe src="employee.html" style="width:100%; height:100%; border:none;"></iframe>`;
-                } else {
-                    newTabContent.innerHTML = `<h3>Other Content for ${tabTitle}</h3>`;
-                }
+    // 모달 닫기
+    function closeModal() {
+        modal.style.display = "none";
+        document.getElementById("slipForm").reset();
+    }
 
-                document.getElementById('tabContentArea').appendChild(newTabContent);
-            }
-
-            showTabContent(tabId);
-        }
-
-        function showTabContent(tabId) {
-            const allTabs = document.querySelectorAll('.tab-content');
-            allTabs.forEach(tab => tab.style.display = 'none');
-
-            const selectedTab = document.getElementById(tabId);
-            if (selectedTab) {
-                selectedTab.style.display = 'block';
-            }
-        }
-
-        const modal = document.getElementById("slipModal");
-        const modalLink = document.getElementById("modalSlip");
-
-        modalLink.onclick = function(e) {
-            e.preventDefault();
-            modal.style.display = "block";
-        }
-
-        function closeModal() {
-            modal.style.display = "none";
-        }
-
-        // 모달 외부 클릭시 닫기
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        // 폼 제출 처리
-        document.getElementById("slipForm").onsubmit = function(e) {
-            e.preventDefault();
-
-            const formData = {
-                date: document.getElementById("slipDate").value,
-                accountType: document.getElementById("accountType").value,
-                amount: document.getElementById("amount").value,
-                description: document.getElementById("description").value
-            };
-
-            // 여기에 데이터 처리 로직 추가
-            console.log("전표 데이터:", formData);
-
-            // 폼 초기화 및 모달 닫기
-            this.reset();
+    // 모달 외부 클릭시 닫기
+    window.onclick = function(event) {
+        if (event.target == modal) {
             closeModal();
         }
+    }
 
-        const accountsByType = {
-            sales: [
-                "4010","4020","4100","4110","1100","1110"
-            ],
-            cost: [
-                "5010","5020","5030","5040","5050","5060","5070","5080","5090","5100"
-            ],
-            asset: [
-                "1200","1300","1400"
-            ],
-            liability: [
-                "2010","2020","2030","2040"
-            ]
+    const accountsByType = {
+        sales: [
+            "4010","4020","4100","4110","1100","1110"
+        ],
+        cost: [
+            "5010","5020","5030","5040","5050","5060","5070","5080","5090","5100"
+        ],
+        asset: [
+            "1200","1300","1400"
+        ],
+        liability: [
+            "2010","2020","2030","2040"
+        ]
+    };
 
+    // 계정과목 옵션 업데이트 함수
+    function updateAccountOptions() {
+        const slipType = document.getElementById("slipType").value;
+        const accountSelect = document.getElementById("accountType");
+
+        // 기존 옵션 제거
+        accountSelect.innerHTML = '<option value="">선택하세요</option>';
+
+        // 선택된 전표 타입에 따른 계정과목 추가
+        if (slipType && accountsByType[slipType]) {
+            accountsByType[slipType].forEach(account => {
+                const option = document.createElement("option");
+                option.value = account;
+                option.textContent = account;
+                accountSelect.appendChild(option);
+            });
+        }
+    }
+
+    // 부가세 계산 함수
+    function calculateVat() {
+        const amount = parseFloat(document.getElementById("amount").value) || 0;
+        const slipType = document.getElementById("slipType").value;
+        const accountType = document.getElementById("accountType").value;
+
+        if ((slipType === 'sales' && accountType.includes('매출')) ||
+            (slipType === 'cost' && accountType.includes('매입'))) {
+            document.getElementById("vat").value = Math.round(amount * 0.1);
+        } else {
+            document.getElementById("vat").value = 0;
+        }
+    }
+
+    // 폼 제출 처리
+    document.getElementById("slipForm").onsubmit = function(e) {
+        e.preventDefault();
+
+        const formData = {
+            slipType: document.getElementById("slipType").value,
+            writerName: document.getElementById("writerName").value,
+            date: document.getElementById("slipDate").value,
+            accountType: document.getElementById("accountType").value,
+            customer: document.getElementById("customer").value,
+            amount: document.getElementById("amount").value,
+            vat: document.getElementById("vat").value,
+            paymentMethod: document.getElementById("paymentMethod").value,
+            description: document.getElementById("description").value
         };
 
-        // 계정과목 옵션 업데이트 함수
-        function updateAccountOptions() {
-            const slipType = document.getElementById("slipType").value;
-            const accountSelect = document.getElementById("accountType");
+        console.log("전표 데이터:", formData);
 
-            // 기존 옵션 제거
-            accountSelect.innerHTML = '<option value="">선택하세요</option>';
-
-            // 선택된 전표 타입에 따른 계정과목 추가
-            if (slipType && accountsByType[slipType]) {
-                accountsByType[slipType].forEach(account => {
-                    const option = document.createElement("option");
-                    option.value = account;
-                    option.textContent = account;
-                    accountSelect.appendChild(option);
-                });
-            }
-        }
-
-        // 부가세 계산 함수
-        function calculateVat() {
-            const amount = parseFloat(document.getElementById("amount").value) || 0;
-            const slipType = document.getElementById("slipType").value;
-            const accountType = document.getElementById("accountType").value;
-
-            // 매출, 매입 전표이고 특정 계정과목인 경우에만 부가세 계산
-            if ((slipType === 'sales' && accountType.includes('매출')) ||
-                (slipType === 'cost' && accountType.includes('매입'))) {
-                document.getElementById("vat").value = Math.round(amount * 0.1);
-            } else {
-                document.getElementById("vat").value = 0;
-            }
-        }
-
-        // 모달 열기
-        const modalLink = document.getElementById("modalSlip");
-        modalLink.onclick = function(e) {
-            e.preventDefault();
-            document.getElementById("slipModal").style.display = "block";
-        }
-
-        // 모달 닫기
-        function closeModal() {
-            document.getElementById("slipModal").style.display = "none";
-            document.getElementById("slipForm").reset();
-        }
-
-        // 모달 외부 클릭시 닫기
-        window.onclick = function(event) {
-            if (event.target == document.getElementById("slipModal")) {
-                closeModal();
-            }
-        }
-
-        // 폼 제출 처리
-        document.getElementById("slipForm").onsubmit = function(e) {
-            e.preventDefault();
-
-            const formData = {
-                slipType: document.getElementById("slipType").value,
-                writerName: document.getElementById("writerName").value,
-                date: document.getElementById("slipDate").value,
-                accountType: document.getElementById("accountType").value,
-                customer: document.getElementById("customer").value,
-                amount: document.getElementById("amount").value,
-                vat: document.getElementById("vat").value,
-                paymentMethod: document.getElementById("paymentMethod").value,
-                description: document.getElementById("description").value
-            };
-
-            // 여기에 데이터 처리 로직 추가
-            console.log("전표 데이터:", formData);
-
-            // 폼 초기화 및 모달 닫기
-            this.reset();
-            closeModal();
-        }
-    </script>
+        // 폼 초기화 및 모달 닫기
+        this.reset();
+        closeModal();
+    }
+</script>
 </body>
 </html>
