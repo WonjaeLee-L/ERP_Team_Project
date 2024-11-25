@@ -484,7 +484,7 @@
             <th class="product_table">상품 설명</th>
             <th class="product_table">회사 코드</th>
         </tr>
-        <tr>
+<!--        <tr>-->
             <!-- 회사, 분류, 이름 -->
 <!--            <th class="select_group">-->
 <!--                    <select class="select_product">-->
@@ -493,13 +493,13 @@
 <!--                        <option>3</option>-->
 <!--                    </select>-->
 <!--            </th>-->
-            <th class="product_table">공급 가격</th>
-            <th class="product_table">판매 가격</th>
-            <th class="product_table">상품 분류</th>
-            <th class="product_table">상품 사진</th>
-            <th class="product_table">상품 설명</th>
-            <th class="product_table">회사 코드</th>
-        </tr>
+<!--            <th class="product_table">공급 가격</th>-->
+<!--            <th class="product_table">판매 가격</th>-->
+<!--            <th class="product_table">상품 분류</th>-->
+<!--            <th class="product_table">상품 사진</th>-->
+<!--            <th class="product_table">상품 설명</th>-->
+<!--            <th class="product_table">회사 코드</th>-->
+<!--        </tr>-->
         <tr class="product_table" th:each="data_product : ${productlist}">
             <td class="product_table" th:text="${data_product.product_code}"></td>
             <td class="product_table" th:text="${data_product.product_name}"></td>
