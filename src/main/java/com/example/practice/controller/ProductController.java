@@ -53,6 +53,7 @@ public class ProductController {
         }
         return "MainProduct";
     }
+
     // 리스트에서 물품 삭제
     @GetMapping("del")
     public String del(@RequestParam("delcode") String delcode) throws Exception {
@@ -67,4 +68,5 @@ public class ProductController {
 
         return "redirect:productlistview";
 
+    }
 }
