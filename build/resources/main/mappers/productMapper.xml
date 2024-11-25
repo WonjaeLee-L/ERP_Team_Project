@@ -14,20 +14,25 @@
                 #{product_explain}, #{company_code})
     </insert>
 
-<!--    <select id="selectProduct" parameterType="String" resultType="com.example.practice.vo.ProductVO">-->
-<!--        select * from product where product_name = '#{search}'-->
-<!--&#45;&#45;         select * from product where product_name like CONCAT('%', #{product_name}, '%')-->
-<!--    </select>-->
-
     <select id="selectProduct" parameterType="String" resultType="com.example.practice.vo.ProductVO">
-        select * from PRODUCT where PRODUCT_NAME like concat('%', concat(#{search}, '%'))
+        select *
+        from PRODUCT
+        where PRODUCT_NAME like concat('%', concat(#{search}, '%'))
     </select>
 
     <delete id="deleteProduct" parameterType="com.example.practice.vo.ProductVO">
         delete product
         where product_code = #{delcode}
     </delete>
+
+    <update id="updateProduct" parameterType="String">
+        update PRODUCT
+        set SALE_PRICE      = #{sale_price},
+            PRICE           = #{price},
+            PRODUCT_IMG     = #{product_img},
+            PRODUCT_EXPLAIN = #{product_explain}
+        where PRODUCT_NAME = #{product_name}
+    </update>
 </mapper>
-<!-- select * from PRODUCT where PRODUCT_NAME = #{search} -->
 
 

@@ -135,6 +135,7 @@
         padding: 15px;
         background-color: #f9f9f9;
     }
+
     .modalbtn {
         border: none;
         display: block;
@@ -150,34 +151,96 @@
         background-color: #222;
         padding: 17px 60px;
         margin: 0 auto;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.20);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
     }
+    .fileBox .uploadFile {
+        display: inline-block;
+        height: 40px;
+        padding: 0 10px;
+        vertical-align: middle;
+        border: 1px solid #dddddd;
+        width: 78%;
+        color: #999999;
+    }
+    .fileBox label {
+        display: inline-block;
+        padding: 10px 20px;
+        color: #fff;
+        vertical-align: middle;
+        background-color: #999999;
+        cursor: pointer;
+        height: 40px;
+        margin-left: 10px;
+    }
+
+    .fileBox input[type="file"] {
+        position: absolute;
+        width: 0;
+        height: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 0;
+    }
+
     th.product_table {
         background: #42444e;
         color: #fff;
         text-align: left;
     }
+
     th.product_table, td.product_table {
         padding: 6px 15px;
     }
-    td.product_table{
+
+    td.product_table {
         border-right: 1px solid #c6c9cc;
         border-bottom: 1px solid #c6c9cc;
     }
-    tr.product_table:hover{
+
+    tr.product_table:hover {
         border-right: 1px solid #c6c9cc;
         border-bottom: 1px solid #c6c9cc;
         background: bisque;
     }
+
     tr:nth-child(even) {
         background: #eaeaed;
     }
+
     table.product_table {
         border-collapse: separate;
         border-spacing: 0;
         width: 100%;
-
     }
+
+    .select_product, .select_group {
+        width: 100%;
+        height: 64px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        font-size: 22px;
+        border: none;
+        background: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+        padding: 5px 15px;
+    }
+
+    .select_product option, .select_group {
+        font-size: 22px;
+        background: #fff;
+    }
+
+    .select_group {
+        height: 64px;
+        margin-bottom: 15px;
+        position: relative;
+    }
+
 </style>
 <body>
 <header>
@@ -207,10 +270,10 @@
             <span class="dropbtn_icon">상품관리</span>
         </button>
         <div class="dropdown-content">
-<!--            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">-->
-<!--                물품 등록-->
-<!--            </button>-->
-<!--            <button type="button" class="btn btn-primary" data-bs-target="#idid">모달버튼</button>-->
+            <!--            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">-->
+            <!--                물품 등록-->
+            <!--            </button>-->
+            <!--            <button type="button" class="btn btn-primary" data-bs-target="#idid">모달버튼</button>-->
             <a href="#">상품 등록</a>
             <a href="#">상품 수정</a>
             <a href="#">상품 삭제</a>
@@ -314,16 +377,7 @@
 
 <Section>
 
-
-    <!--    <div>-->
-    <!--    <ul class="tabs">-->
-    <!--        <li onclick="document.getElementById('tab1').classList.add('active-tab')">탭 1</li>-->
-    <!--        <li onclick="document.getElementById('tab2').classList.add('active-tab')">탭 2</li>-->
-    <!--        <li onclick="document.getElementById('tab3').classList.add('active-tab')">탭 3</li>-->
-    <!--    </ul>-->
-    <!--    </div>-->
     <div class="container mt-5" style="background-color: coral">
-        <!-- Button to Open the Modal --> <!-- data-bs-toggle(모달을 연다는 의미) -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">
             물품 등록
         </button>
@@ -343,15 +397,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <!-- Modal body -->
-                <form method="post" action="product">
+                <form method="post" action="product" enctype="multipart/form-data">
                     <div class="modal-body">
-                        <!-- hidden 영역 -->
-                        <!--            <input type="hidden" name="product_code" th:value="${product.product_code}">-->
-                        <!--            <input type="hidden" name="POST_NUM" th:value="${prductlist.product_code}">-->
-                        <!--            <input type="hidden" name="CATEGORY_NAME" th:value="${resultMap.CATEGORY_NAME}">-->
-
-                        <!-- 입력 영역 -->
-                        <!--            <input type="text" id="content" name="CONTENT">-->
 
                         <div class="col-md-3">
                             <label for="inputCode" class="form-label">상품코드</label>
@@ -377,23 +424,18 @@
                             <label for="inputImg" class="form-label">이미지</label>
                             <input type="text" class="form-control" id="inputImg" name="product_img">
                         </div>
-                        <!--    <div class="form-floating">-->
-                        <!--          <textarea class="form-control" id="floatingTextarea2"-->
-                        <!--                    style="height: 200px" name="product_explain"></textarea>-->
-                        <!--        <label for="floatingTextarea2">Comments</label>-->
-                        <!--    </div>-->
                         <div class="col-12">
                             <label for="inputExplain" class="form-label">설명</label>
                             <input type="text" class="form-control" id="inputExplain" name="product_explain">
                         </div>
-
-                        <!--    <div class="col-12">-->
-                        <!--        <label for="inputExplain" class="form-label">이미지설명</label>-->
-                        <!--        <input type="text" class="form-control" id="inputExplain" name="product_explain">-->
-                        <!--    </div>-->
                         <div class="col-md-3">
                             <label for="inputCompanyCode" class="form-label">회사코드</label>
                             <input type="text" class="form-control" id="inputCompanyCode" name="company_code">
+                        </div>
+                        <div class="fileBox">
+                            <input class="uploadFile" type="file" id="imgFile">
+                            <label for="file"></label>
+                            <input type="file" id="file">
                         </div>
 
                     </div>
@@ -430,83 +472,34 @@
     </div>
 
 
-
-
-
-    <!--    <div class="col justify-content-center my-1 mx-0">-->
-    <!--        <form method="post" action="product">-->
-    <!--            &lt;!&ndash; hidden 영역 &ndash;&gt;-->
-    <!--&lt;!&ndash;            <input type="hidden" name="product_code" th:value="${product.product_code}">&ndash;&gt;-->
-    <!--&lt;!&ndash;            <input type="hidden" name="POST_NUM" th:value="${prductlist.product_code}">&ndash;&gt;-->
-    <!--&lt;!&ndash;            <input type="hidden" name="CATEGORY_NAME" th:value="${resultMap.CATEGORY_NAME}">&ndash;&gt;-->
-
-    <!--            &lt;!&ndash; 입력 영역 &ndash;&gt;-->
-    <!--&lt;!&ndash;            <input type="text" id="content" name="CONTENT">&ndash;&gt;-->
-
-    <!--            <div class="col-md-3">-->
-    <!--                <label for="inputCode" class="form-label">상품코드</label>-->
-    <!--                <input type="text" class="form-control" id="inputCode" name="product_code">-->
-    <!--            </div>-->
-    <!--            <div class="col-md-3">-->
-    <!--                <label for="inputProduct" class="form-label">상품명</label>-->
-    <!--                <input type="text" class="form-control" id="inputProduct" name="product_name">-->
-    <!--            </div>-->
-    <!--            <div class="col-12">-->
-    <!--                <label for="inputSale" class="form-label">판매가</label>-->
-    <!--                <input type="text" class="form-control" id="inputSale" name="sale_price">-->
-    <!--            </div>-->
-    <!--            <div class="col-12">-->
-    <!--                <label for="inputPrice" class="form-label">가격</label>-->
-    <!--                <input type="text" class="form-control" id="inputPrice" name="price">-->
-    <!--            </div>-->
-    <!--            <div class="col-12">-->
-    <!--                <label for="inputCategory" class="form-label">카테고리코드</label>-->
-    <!--                <input type="text" class="form-control" id="inputCategory" name="category_code">-->
-    <!--            </div>-->
-    <!--            <div class="col-12">-->
-    <!--                <label for="inputImg" class="form-label">이미지</label>-->
-    <!--                <input type="text" class="form-control" id="inputImg" name="product_img">-->
-    <!--            </div>-->
-    <!--            &lt;!&ndash;    <div class="form-floating">&ndash;&gt;-->
-    <!--            &lt;!&ndash;          <textarea class="form-control" id="floatingTextarea2"&ndash;&gt;-->
-    <!--            &lt;!&ndash;                    style="height: 200px" name="product_explain"></textarea>&ndash;&gt;-->
-    <!--            &lt;!&ndash;        <label for="floatingTextarea2">Comments</label>&ndash;&gt;-->
-    <!--            &lt;!&ndash;    </div>&ndash;&gt;-->
-    <!--            <div class="col-12">-->
-    <!--                <label for="inputExplain" class="form-label">설명</label>-->
-    <!--                <input type="text" class="form-control" id="inputExplain" name="product_explain">-->
-    <!--            </div>-->
-
-    <!--            &lt;!&ndash;    <div class="col-12">&ndash;&gt;-->
-    <!--            &lt;!&ndash;        <label for="inputExplain" class="form-label">이미지설명</label>&ndash;&gt;-->
-    <!--            &lt;!&ndash;        <input type="text" class="form-control" id="inputExplain" name="product_explain">&ndash;&gt;-->
-    <!--            &lt;!&ndash;    </div>&ndash;&gt;-->
-    <!--            <div class="col-12">-->
-    <!--                <label for="inputCompanyCode" class="form-label">회사코드</label>-->
-    <!--                <input type="text" class="form-control" id="inputCompanyCode" name="company_code">-->
-    <!--            </div>-->
-
-    <!--            <button type="submit" value="댓글작성"></button>-->
-    <!--        </form>-->
-    <!--    </div>-->
-
-
-
-<table class="product_table">
-    <tr class="product_table">
-        <th class="product_table">상품 코드</th>
-        <th class="product_table">상품 이름</th>
-        <th class="product_table">공급 가격</th>
-        <th class="product_table">판매 가격</th>
-        <th class="product_table">상품 분류</th>
-        <th class="product_table">상품 사진</th>
-        <th class="product_table">상품 설명</th>
-        <th class="product_table">회사 코드</th>
-    </tr>
+    <table class="product_table">
+        <tr class="product_table">
+            <th class="product_table">상품 코드</th>
+            <th class="product_table">상품 이름</th>
+            <th class="product_table">공급 가격</th>
+            <th class="product_table">판매 가격</th>
+            <th class="product_table">상품 분류</th>
+            <th class="product_table">상품 사진</th>
+            <th class="product_table">상품 설명</th>
+            <th class="product_table">회사 코드</th>
+        </tr>
+        <tr>
+            <!-- 회사, 분류, 이름 -->
+            <th class="select_group">
+                    <select class="select_product">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+            </th>
+            <th class="product_table">공급 가격</th>
+            <th class="product_table">판매 가격</th>
+            <th class="product_table">상품 분류</th>
+            <th class="product_table">상품 사진</th>
+            <th class="product_table">상품 설명</th>
+            <th class="product_table">회사 코드</th>
+        </tr>
         <tr class="product_table" th:each="data_product : ${productlist}">
-            <!--        <form method="POST">-->
-<!--            <input type="hidden" name="product_code" th:value="${product.product_code}">-->
-
             <td class="product_table" th:text="${data_product.product_code}"></td>
             <td class="product_table" th:text="${data_product.product_name}"></td>
             <td class="product_table" th:text="${data_product.sale_price}"></td>
@@ -515,19 +508,7 @@
             <td class="product_table" th:text="${data_product.product_img}"></td>
             <td class="product_table" th:text="${data_product.product_explain}"></td>
             <td class="product_table" th:text="${data_product.company_code}"></td>
-
-            <!--            <div>-->
-            <!--                <input type="button" class="btn p-0 btn-md" name="commentID" th:value="${comment.EMAIL}" />-->
-            <!--                <small th:text="${#strings.substring(comment.TIME,0,19)}"></small>-->
-            <!--            </div>-->
-            <!--            <div th:text="${comment.CONTENT}"></div>-->
-            <!--            <div class="text-right" th:if="${comment.EMAIL==userInform.userEmail}">-->
-            <!--                <span><button type="submit" name="submit" value="update">수정</button></span>-->
-            <!--                <span><button type="submit" name="submit" value="delete">삭제</button></span>-->
-            <!--            </div>-->
-            <!--        </form>-->
         </tr>
-        <!--</div>-->
 
     </table>
     <div>
@@ -555,7 +536,6 @@
 
     <div id="ex1_Result1"></div>
     <div id="ex1_Result2"></div>
-
 
 
 </Section>
@@ -602,9 +582,8 @@
     }
 
 
-    // 테이블의 Row 클릭시 값 가져오기
-    $(document).ready(function(){
-        $(".product_table tr").click(function(){
+    $(document).ready(function () {
+        $(".product_table tr").click(function () {
             let str = "";
             let tdArr = []; // 배열 선언
 
@@ -612,17 +591,14 @@
             let tr = $(this);
             let td = tr.children();
 
-            // tr.text()는 클릭된 Row 즉 tr에 있는 모든 값을 가져온다.
             console.log("클릭한 Row의 모든 데이터 : " + tr.text());
 
-            // 반복문을 이용해서 배열에 값을 담아 사용할 수 도 있다.
-            td.each(function(i){
+            td.each(function (i) {
                 tdArr.push(td.eq(i).text());
             });
 
             console.log("배열에 담긴 값 : " + tdArr);
 
-            // td.eq(index)를 통해 값을 가져올 수도 있다.
             var no = td.eq(0).text();
             var name = td.eq(1).text();
             var sale_price = td.eq(2).text();
@@ -643,6 +619,28 @@
 
             $("#ex1_Result1").html(" * 클릭한 Row의 모든 데이터 = " + tr.text());
             $("#ex1_Result2").html(str);
+
+            $.ajax({
+                type: "POST",
+                url: "/productmod",
+                data: JSON.stringify({
+                    product_code: no,
+                    product_name: name,
+                    sale_price: sale_price,
+                    price: price,
+                    category_code: category_code,
+                    product_img: product_img,
+                    product_explain: product_explain,
+                    company_code: company_code
+                }),
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    console.log("서버로 전송 성공", response);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log("서버로 전송 실패", textStatus, errorThrown);
+                }
+            });
         });
     });
 </script>
