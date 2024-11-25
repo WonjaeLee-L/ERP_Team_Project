@@ -21,7 +21,11 @@
     <!-- tr 하나가 VO 한 개. 몇 개 반복 되는지는 모름. model이 넘겨준 list size 만큼 반복 된다. -->
     <!-- list라는 변수를 가져와서(items), boardvo(var)에 저장하고, 아래를 돌고 반복 -->
     <!-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>를 입력하여 jstl문법을 인식시킨다. -->
-<div th:text="${productlist}"></div>
+<div th:text="${productlist[0].product_code}"></div>
+<!--    <tr>-->
+
+<!--    <td th:text="${product.product_code}"></td>-->
+<!--    </tr>-->
 
     <!--    <div th:each="productlist : ${productlist}">-->
 <!--      <tr>-->
@@ -67,8 +71,8 @@
 
 
 
-<div style="background-color:coral">
 
-</div>
+
+
 </body>
 </html>

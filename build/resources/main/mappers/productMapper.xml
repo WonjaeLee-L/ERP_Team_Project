@@ -4,16 +4,30 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.practice.repository.IF_ProductDao">
     <select id="selectAll" resultType="com.example.practice.vo.ProductVO">
-        select * from product
+        select *
+        from product
     </select>
 
     <insert id="insertProduct" parameterType="com.example.practice.vo.ProductVO">
-        insert into product values (#{product_code},#{product_name},#{sale_price},#{price},#{category_code},#{product_img},#{product_explain},#{company_code})
+        insert into product
+        values (#{product_code}, #{product_name}, #{sale_price}, #{price}, #{category_code}, #{product_img},
+                #{product_explain}, #{company_code})
     </insert>
 
-    <select id="selectProduct" resultType="com.example.practice.vo.ProductVO">
-        select * from product where PRODUCT_NAME=#{product_name}
+<!--    <select id="selectProduct" parameterType="String" resultType="com.example.practice.vo.ProductVO">-->
+<!--        select * from product where product_name = '#{search}'-->
+<!--&#45;&#45;         select * from product where product_name like CONCAT('%', #{product_name}, '%')-->
+<!--    </select>-->
+
+    <select id="selectProduct" parameterType="String" resultType="com.example.practice.vo.ProductVO">
+        select * from PRODUCT where PRODUCT_NAME like concat('%', concat(#{search}, '%'))
     </select>
 
+    <delete id="deleteProduct" parameterType="com.example.practice.vo.ProductVO">
+        delete product
+        where product_code = #{delcode}
+    </delete>
 </mapper>
+<!-- select * from PRODUCT where PRODUCT_NAME = #{search} -->
+
 
