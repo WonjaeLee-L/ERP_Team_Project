@@ -13,11 +13,16 @@
         values (#{product_code}, #{product_name}, #{sale_price}, #{price}, #{category_code}, #{product_img},
                 #{product_explain}, #{company_code})
     </insert>
-
+<!--    문자열 포함 검색. 다중 결과-->
     <select id="selectProduct" parameterType="String" resultType="com.example.practice.vo.ProductVO">
         select *
         from PRODUCT
         where PRODUCT_NAME like concat('%', concat(#{search}, '%'))
+    </select>
+
+<!--    정확히 일치하는 경우 검색-->
+    <select id="selectOneProduct" parameterType="String" resultType="com.example.practice.vo.ProductVO">
+        select * from PRODUCT where PRODUCT_NAME = #{oneSearch}
     </select>
 
     <delete id="deleteProduct" parameterType="com.example.practice.vo.ProductVO">

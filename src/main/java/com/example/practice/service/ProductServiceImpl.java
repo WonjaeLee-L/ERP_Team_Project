@@ -28,22 +28,35 @@ public class ProductServiceImpl implements IF_ProductService{
     }
 
     @Override
-    public List<ProductVO> selectProduct(String product_name) throws Exception {
-        System.out.println("selectProduct product_name: " + product_name);  // Add debug
-        if (product_name == null || product_name.isEmpty()) {
+    public List<ProductVO> selectProduct(String search) throws Exception {
+        System.out.println("selectProduct product_name: " + search);  // Add debug
+        if (search == null || search.isEmpty()) {
             System.out.println("product_name이 null이거나 비어 있습니다.");
 
             return Collections.emptyList();
         }
         System.out.println("selectProduct 결과: ");  // 결과 디버그
-        List<ProductVO> productVOList = productDao.selectProduct(product_name);
+        List<ProductVO> productVOList = productDao.selectProduct(search);
         System.out.println(productVOList);
-        return productDao.selectProduct(product_name);
+        return productDao.selectProduct(search);
 //        return productDao.selectProduct(product_name);
+    }
+
+    @Override
+    public ProductVO selectOneProduct(String oneSearch) throws Exception {
+
+        return productDao.selectOneProduct(oneSearch);
     }
 
     @Override
     public void deleteProduct(String delcode) throws Exception {
         productDao.deleteProduct(delcode);
     }
+
+    @Override
+    public void updateProduct(ProductVO productVO) throws Exception {
+        productDao.updateProduct(productVO);
+    }
+
+
 }

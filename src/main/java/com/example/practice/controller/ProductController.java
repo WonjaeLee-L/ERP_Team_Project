@@ -61,11 +61,18 @@ public class ProductController {
         return "redirect:productlistview";
     }
 
-    @PostMapping("/productmod")
-    public String productmod(@RequestBody ProductVO productVO) throws Exception {
-        productservice.selectProduct(productVO.getProduct_name());
-        return "redirect:productlistview";
-    }
+    // 단일 검색
+//    @PostMapping("/productmod")
+//    public String productmod(@RequestBody ProductVO productVO) throws Exception {
+//        productservice.selectOneProduct(productVO.getProduct_name());
+//
+//        return null;// 여기서, 입력 창 열고,
+//    }
 
-
+    // 새로 입력 받은 내용 수정
+//    @PostMapping("임시값")
+//    public void productMod(@ModelAttribute ProductVO productVO) throws Exception {
+//        productservice.updateProduct(productVO);
+//    }
+// 최신 본
 }

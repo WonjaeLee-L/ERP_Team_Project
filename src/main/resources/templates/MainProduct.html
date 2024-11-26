@@ -153,6 +153,7 @@
         margin: 0 auto;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
     }
+
     .fileBox .uploadFile {
         display: inline-block;
         height: 40px;
@@ -162,6 +163,7 @@
         width: 78%;
         color: #999999;
     }
+
     .fileBox label {
         display: inline-block;
         padding: 10px 20px;
@@ -387,16 +389,16 @@
     </div>
 
 
-    <!-- The Modal --> <!-- 여기부터 맨 밑에까지가 모달 코드 -->
+    <!-- 신규 상품 등록 모달 -->
     <div class="modal" id="addProduct">
         <div class="modal-dialog">
             <div class="modal-content">
-                <!-- Modal Header -->
+
                 <div class="modal-header">
                     <h4 class="modal-title" style="margin-left: 30px">신규 상품 등록</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <!-- Modal body -->
+
                 <form method="post" action="product" enctype="multipart/form-data">
                     <div class="modal-body">
 
@@ -432,7 +434,7 @@
                             <label for="inputCompanyCode" class="form-label">회사코드</label>
                             <input type="text" class="form-control" id="inputCompanyCode" name="company_code">
                         </div>
-                            <label class="form-label">파일 업로드</label>
+                        <label class="form-label">파일 업로드</label>
                         <div class="fileBox">
                             <input class="uploadFile" value="file" placeholder="file">
                             <label for="file">찾기</label>
@@ -440,7 +442,7 @@
                         </div>
 
                     </div>
-                    <!-- Modal footer -->
+
                     <div class="modal-footer">
                         <input type="submit" class="modalbtn" value="물품 등록"></input>
                         <button type="button" class="modalbtn" data-bs-dismiss="modal">Close</button>
@@ -450,23 +452,66 @@
             </div>
         </div>
     </div>
-    <!-- 여기서부터 다시 모달 코드 -->
+
+    <!-- 기존 상품 수정 모달 -->
     <div class="modal" id="myModal2">
         <div class="modal-dialog">
             <div class="modal-content">
-                <!-- Modal Header -->
+
                 <div class="modal-header">
-                    <h4 class="modal-title">Modal2 Heading</h4>
+                    <h4 class="modal-title" style="margin-left: 30px">기존 상품 수정</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <!-- Modal body -->
-                <div class="modal-body">
-                    Modal2 body..
-                </div>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                </div>
+
+                <form method="post" action="product" enctype="multipart/form-data">
+                    <div class="modal-body">
+
+                        <div class="col-md-3">
+                            <label for="modCode" class="form-label">상품코드</label>
+                            <input type="text" class="form-control" id="modCode" name="product_code">
+                        </div>
+                        <div class="col-md-5">
+                            <label for="modProduct" class="form-label">상품명</label>
+                            <input type="text" class="form-control" id="modProduct" name="product_name">
+                        </div>
+                        <div class="col-md-5">
+                            <label for="modSale" class="form-label">판매가</label>
+                            <input type="text" class="form-control" id="modSale" name="sale_price">
+                        </div>
+                        <div class="col-md-5">
+                            <label for="modPrice" class="form-label">가격</label>
+                            <input type="text" class="form-control" id="modPrice" name="price">
+                        </div>
+                        <div class="col-12">
+                            <label for="modCategory" class="form-label">카테고리코드</label>
+                            <input type="text" class="form-control" id="modCategory" name="category_code">
+                        </div>
+                        <div class="col-12">
+                            <label for="modImg" class="form-label">이미지</label>
+                            <input type="text" class="form-control" id="modImg" name="product_img">
+                        </div>
+                        <div class="col-12">
+                            <label for="modExplain" class="form-label">설명</label>
+                            <input type="text" class="form-control" id="modExplain" name="product_explain">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="modCompanyCode" class="form-label">회사코드</label>
+                            <input type="text" class="form-control" id="modCompanyCode" name="company_code">
+                        </div>
+                        <label class="form-label">파일 업로드</label>
+                        <div class="fileBox">
+                            <input class="uploadFile" value="file" placeholder="file">
+                            <label for="file">찾기</label>
+                            <input type="file" id="file1">
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <input type="submit" class="modalbtn" value="물품 등록"></input>
+                        <button type="button" class="modalbtn" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
 
             </div>
         </div>
@@ -484,23 +529,24 @@
             <th class="product_table">상품 설명</th>
             <th class="product_table">회사 코드</th>
         </tr>
-<!--        <tr>-->
-            <!-- 회사, 분류, 이름 -->
-<!--            <th class="select_group">-->
-<!--                    <select class="select_product">-->
-<!--                        <option>1</option>-->
-<!--                        <option>2</option>-->
-<!--                        <option>3</option>-->
-<!--                    </select>-->
-<!--            </th>-->
-<!--            <th class="product_table">공급 가격</th>-->
-<!--            <th class="product_table">판매 가격</th>-->
-<!--            <th class="product_table">상품 분류</th>-->
-<!--            <th class="product_table">상품 사진</th>-->
-<!--            <th class="product_table">상품 설명</th>-->
-<!--            <th class="product_table">회사 코드</th>-->
-<!--        </tr>-->
-        <tr class="product_table" th:each="data_product : ${productlist}">
+        <!--        <tr>-->
+        <!-- 회사, 분류, 이름 -->
+        <!--            <th class="select_group">-->
+        <!--                    <select class="select_product">-->
+        <!--                        <option>1</option>-->
+        <!--                        <option>2</option>-->
+        <!--                        <option>3</option>-->
+        <!--                    </select>-->
+        <!--            </th>-->
+        <!--            <th class="product_table">공급 가격</th>-->
+        <!--            <th class="product_table">판매 가격</th>-->
+        <!--            <th class="product_table">상품 분류</th>-->
+        <!--            <th class="product_table">상품 사진</th>-->
+        <!--            <th class="product_table">상품 설명</th>-->
+        <!--            <th class="product_table">회사 코드</th>-->
+        <!--        </tr>-->
+        <tr class="product_table" th:each="data_product : ${productlist}" data-bs-toggle="modal"
+            data-bs-target="myModal2">
             <td class="product_table" th:text="${data_product.product_code}"></td>
             <td class="product_table" th:text="${data_product.product_name}"></td>
             <td class="product_table" th:text="${data_product.sale_price}"></td>
