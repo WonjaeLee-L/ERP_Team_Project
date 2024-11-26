@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form class="row g-3" action="product" method="post">
+<!--    <div class="col-md-4">-->
+<!--        <label for="inputState" class="form-label">선택</label>-->
+<!--        <select id="inputState" class="form-select" name="type">-->
+<!--            <option selected>창고</option>-->
+<!--            <option>Java</option>-->
+<!--        </select>-->
+<!--    </div>-->
+    <div class="col-md-3">
+        <label for="inputCode" class="form-label">상품코드</label>
+        <input type="text" class="form-control" id="inputCode" name="product_code">
+    </div>
+    <div class="col-md-3">
+        <label for="inputProduct" class="form-label">상품명</label>
+        <input type="text" class="form-control" id="inputProduct" name="product_name">
+    </div>
+    <div class="col-12">
+        <label for="inputSale" class="form-label">판매가</label>
+        <input type="text" class="form-control" id="inputSale" name="sale_price">
+    </div>
+    <div class="col-12">
+        <label for="inputPrice" class="form-label">가격</label>
+        <input type="text" class="form-control" id="inputPrice" name="price">
+    </div>
+    <div class="col-12">
+        <label for="inputCategory" class="form-label">카테고리코드</label>
+        <input type="text" class="form-control" id="inputCategory" name="category_code">
+    </div>
+    <div class="col-12">
+        <label for="inputImg" class="form-label">이미지</label>
+        <input type="text" class="form-control" id="inputImg" name="product_img">
+    </div>
+<!--    <div class="form-floating">-->
+<!--          <textarea class="form-control" id="floatingTextarea2"-->
+<!--                    style="height: 200px" name="product_explain"></textarea>-->
+<!--        <label for="floatingTextarea2">Comments</label>-->
+<!--    </div>-->
+    <div class="col-12">
+        <label for="inputExplain" class="form-label">설명</label>
+        <input type="text" class="form-control" id="inputExplain" name="product_explain">
+    </div>
+
+<!--    <div class="col-12">-->
+<!--        <label for="inputExplain" class="form-label">이미지설명</label>-->
+<!--        <input type="text" class="form-control" id="inputExplain" name="product_explain">-->
+<!--    </div>-->
+    <div class="col-12">
+        <label for="inputCompanyCode" class="form-label">회사코드</label>
+        <input type="text" class="form-control" id="inputCompanyCode" name="company_code">
+    </div>
+
+
+<!--    <div class="mb-3">-->
+<!--        &lt;!&ndash; 파일자체와 파일의 정보(파일명, 파일의 용량 : metadata_data에 대한 정보를 담고 있는 것). 두 가지가 올라간다. &ndash;&gt;-->
+<!--        &lt;!&ndash; input type file로 하면 파일 선택할 수 있게 나온다.(파일의 속성을 가진다) &ndash;&gt;-->
+<!--        &lt;!&ndash; name : 파라미터의 변수로 사용하겠다. name이 같아서 length가 2인 배열로 올라간다. 순서대로 1,2번째 파일의 정보가 올라간다. &ndash;&gt;-->
+<!--        <input class="form-control" type="file" name ="file" id="formFile">-->
+<!--        <input class="form-control" type="file" name ="file" id="formFile">-->
+<!--    </div>-->
+
+<!--    <div class="col-12">-->
+<!--        <div class="form-check">-->
+<!--            <input class="form-check-input" type="checkbox" id="gridCheck" name="viewmember" value=1>-->
+<!--            <label class="form-check-label" for="gridCheck">-->
+<!--                회원만 보기-->
+<!--            </label>-->
+<!--        </div>-->
+<!--    </div>-->
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">저장하기</button>
+        <!-- submit 타입은 form tag의 action으로 지정된 곳으로 이동 -->
+    </div>
+</form>
+<div style=background-color:yellow>
+    <a href="back">뒤로</a>
+</div>
+</body>
+</html>
