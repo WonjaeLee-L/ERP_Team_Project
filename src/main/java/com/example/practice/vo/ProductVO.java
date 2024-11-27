@@ -2,6 +2,10 @@ package com.example.practice.vo;
 
 import lombok.Data;
 import lombok.Getter;
+
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
 @Data
 public class ProductVO {
 
@@ -13,5 +17,9 @@ public class ProductVO {
     String product_img;
     String product_explain;
     String company_code;
+
+//    public String getThumbnail() {
+//        return URLEncoder.encode(product_img, StandardCharsets.UTF_8);
+//    }
 
 }

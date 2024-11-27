@@ -36,7 +36,7 @@ dependencies {
     testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     implementation group: 'com.oracle.ojdbc', name: 'orai18n', version: '19.3.0.0'
-
+    implementation group: 'net.coobird', name: 'thumbnailator', version: '0.4.20'
 
 }
 
